@@ -14,6 +14,8 @@
 		83EDD49B29EC08C800CFCC28 /* iosExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EDD49A29EC08C800CFCC28 /* iosExampleTests.swift */; };
 		83EDD4A529EC08C800CFCC28 /* iosExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EDD4A429EC08C800CFCC28 /* iosExampleUITests.swift */; };
 		83EDD4A729EC08C800CFCC28 /* iosExampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EDD4A629EC08C800CFCC28 /* iosExampleUITestsLaunchTests.swift */; };
+		83F896A729ED15C0002FE7B9 /* commonMain in Resources */ = {isa = PBXBuildFile; fileRef = 83F896A529ED15C0002FE7B9 /* commonMain */; };
+		83F896A829ED15C0002FE7B9 /* iosMain in Resources */ = {isa = PBXBuildFile; fileRef = 83F896A629ED15C0002FE7B9 /* iosMain */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		83EDD4A029EC08C800CFCC28 /* iosExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EDD4A429EC08C800CFCC28 /* iosExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosExampleUITests.swift; sourceTree = "<group>"; };
 		83EDD4A629EC08C800CFCC28 /* iosExampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosExampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		83F896A529ED15C0002FE7B9 /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
+		83F896A629ED15C0002FE7B9 /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 		83EDD47C29EC08C600CFCC28 = {
 			isa = PBXGroup;
 			children = (
+				83F896A429ED1540002FE7B9 /* HighlightsDebug */,
 				83EDD48729EC08C600CFCC28 /* iosExample */,
 				83EDD49929EC08C800CFCC28 /* iosExampleTests */,
 				83EDD4A329EC08C800CFCC28 /* iosExampleUITests */,
@@ -127,6 +132,15 @@
 				83EDD4A629EC08C800CFCC28 /* iosExampleUITestsLaunchTests.swift */,
 			);
 			path = iosExampleUITests;
+			sourceTree = "<group>";
+		};
+		83F896A429ED1540002FE7B9 /* HighlightsDebug */ = {
+			isa = PBXGroup;
+			children = (
+				83F896A529ED15C0002FE7B9 /* commonMain */,
+				83F896A629ED15C0002FE7B9 /* iosMain */,
+			);
+			path = HighlightsDebug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +250,8 @@
 			files = (
 				83EDD49129EC08C800CFCC28 /* Preview Assets.xcassets in Resources */,
 				83EDD48D29EC08C800CFCC28 /* Assets.xcassets in Resources */,
+				83F896A729ED15C0002FE7B9 /* commonMain in Resources */,
+				83F896A829ED15C0002FE7B9 /* iosMain in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
