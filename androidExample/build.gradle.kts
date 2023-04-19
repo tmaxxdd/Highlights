@@ -40,7 +40,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = extra["compose.compiler.version"] as String
+        kotlinCompilerExtensionVersion = "1.4.5"
     }
 }
 

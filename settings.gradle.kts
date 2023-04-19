@@ -5,11 +5,6 @@ pluginManagement {
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         mavenCentral()
     }
-
-    plugins {
-        val composeVersion = extra["compose.version"] as String
-        id("org.jetbrains.compose").version(composeVersion)
-    }
 }
 
 dependencyResolutionManagement {
@@ -23,4 +18,3 @@ dependencyResolutionManagement {
 rootProject.name = "Highlights"
 include(":shared")
 include(":androidExample")
-
