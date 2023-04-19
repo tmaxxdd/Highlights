@@ -10,8 +10,7 @@ kotlin {
     android {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "11"
-//                useIR = true
+                jvmTarget = "1.8"
             }
         }
     }
@@ -76,19 +75,5 @@ android {
 
     defaultConfig {
         minSdk = 24
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = extra["compose.version"] as String
-        kotlinCompilerVersion = extra["compose.version"] as String
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
     }
 }
