@@ -1,10 +1,9 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(libs.plugins.compose)
-    //trick: for the same plugin versions in all sub-modules
-    kotlin("multiplatform").version("1.8.10").apply(false)
-    id("com.android.library").version("8.0.0").apply(false)
-    id("org.jetbrains.kotlin.android").version("1.8.20").apply(false)
+    alias(libs.plugins.compose) apply false
+    alias(libs.plugins.multiplatform) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.android.library) apply false
 }
 
 tasks.register("clean", Delete::class) {
