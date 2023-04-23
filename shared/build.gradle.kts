@@ -1,16 +1,15 @@
-import org.jetbrains.kotlin.config.JvmAnalysisFlags.useIR
-
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    id("org.jetbrains.compose")
+    alias(libs.plugins.multiplatform)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.compose)
 }
 
 kotlin {
     android {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = libs.versions.jvmTarget.get()
             }
         }
     }
@@ -22,8 +21,24 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            isStatic = true
         }
     }
+
+//    iosSimulatorArm64("uikit")
+//    ios("uikit") {
+//        binaries {
+//            executable() {
+//                freeCompilerArgs += listOf(
+//                    "-linker-option", "-framework", "-linker-option", "Metal",
+//                    "-linker-option", "-framework", "-linker-option", "CoreText",
+//                    "-linker-option", "-framework", "-linker-option", "CoreGraphics"
+//                )
+//                // TODO: the current compose binary surprises LLVM, so disable checks for now.
+//                freeCompilerArgs += "-Xdisable-phases=VerifyBitcode"
+//            }
+//        }
+//    }
 
     sourceSets {
         val commonMain by getting {
@@ -31,6 +46,7 @@ kotlin {
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material)
+                implementation(compose.ui)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
             }

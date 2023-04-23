@@ -623,7 +623,7 @@
 				83EDD4A929EC08C800CFCC28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		83EDD4AA29EC08C800CFCC28 /* Build configuration list for PBXNativeTarget "iosExample" */ = {
 			isa = XCConfigurationList;
@@ -632,7 +632,7 @@
 				83EDD4AC29EC08C800CFCC28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		83EDD4AD29EC08C800CFCC28 /* Build configuration list for PBXNativeTarget "iosExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -641,7 +641,7 @@
 				83EDD4AF29EC08C800CFCC28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		83EDD4B029EC08C800CFCC28 /* Build configuration list for PBXNativeTarget "iosExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -650,7 +650,7 @@
 				83EDD4B229EC08C800CFCC28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
