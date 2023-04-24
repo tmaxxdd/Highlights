@@ -25,21 +25,6 @@ kotlin {
         }
     }
 
-//    iosSimulatorArm64("uikit")
-//    ios("uikit") {
-//        binaries {
-//            executable() {
-//                freeCompilerArgs += listOf(
-//                    "-linker-option", "-framework", "-linker-option", "Metal",
-//                    "-linker-option", "-framework", "-linker-option", "CoreText",
-//                    "-linker-option", "-framework", "-linker-option", "CoreGraphics"
-//                )
-//                // TODO: the current compose binary surprises LLVM, so disable checks for now.
-//                freeCompilerArgs += "-Xdisable-phases=VerifyBitcode"
-//            }
-//        }
-//    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {

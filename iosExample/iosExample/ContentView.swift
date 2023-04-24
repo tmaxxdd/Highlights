@@ -8,10 +8,13 @@
 import SwiftUI
 import shared
 
-
  struct ComposeView: UIViewControllerRepresentable {
    func makeUIViewController(context: Context) -> UIViewController {
-       IOSClientScreenKt.MainViewController()
+       IOSClientScreenKt.CodeTextViewUiViewController(
+        code: "abcd",
+        language: SyntaxLanguage.values().index(of: 0),
+        theme: SyntaxThemes.shared.monokai
+       )
    }
 
    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
@@ -20,6 +23,5 @@ import shared
 struct ContentView: View {
     var body: some View {
       ComposeView().ignoresSafeArea(.keyboard) // Compose has own keyboard handler
-//         Text("\(Highlights.companion.getText())")
     }
 }
