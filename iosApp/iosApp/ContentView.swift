@@ -12,19 +12,34 @@ struct ComposableView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         IOSClientScreenKt.CodeTextViewUiViewControllerDefault(code: "class Java extends {/n/n}")
     }
-
+    
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
+    @State private var themeSelection = 0
+    @State private var languageSelection = 0
+    
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("Highlights")
+            Divider()
             ComposableView().ignoresSafeArea(.keyboard)
+            Picker(selection: $themeSelection, label: Text("Select theme")) {
+                let themes = SyntaxThemes.shared.themes.keys.map { $0.description }
+                ForEach(themes, id: \.self) {
+                    Text("\($0)")
+                }
+            }
             
+            Picker(selection: $languageSelection, label: Text("Select Language")) {
+                let languages = SyntaxLanguage.companion.getNames()
+                ForEach(languages, id: \.self) {
+                    Text("\($0)")
+                }
+            }
         }
         .padding()
     }

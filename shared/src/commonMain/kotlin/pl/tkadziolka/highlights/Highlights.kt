@@ -1,5 +1,6 @@
 package pl.tkadziolka.highlights
 
+import androidx.compose.ui.text.capitalize
 import pl.tkadziolka.highlights.internal.CodeAnalyzer
 import pl.tkadziolka.highlights.model.*
 
@@ -14,7 +15,7 @@ class Highlights private constructor(
     companion object {
         fun fromBuilder(builder: Builder) = builder.build()
 
-        fun getText() = "HighlightsText"
+        fun getLanguageList() = SyntaxLanguage.values().map { it.name.capitalize() }
     }
 
     data class Builder(
