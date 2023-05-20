@@ -6,7 +6,6 @@ private const val NOTEPAD_KEY = "notepad"
 private const val MATRIX_KEY = "matrix"
 private const val PASTEL_KEY = "pastel"
 
-
 object SyntaxThemes {
 
     val themes = mapOf(
@@ -44,12 +43,12 @@ object SyntaxThemes {
             mark = 0xAA2C8C
         ),
         MATRIX_KEY to SyntaxTheme(
-            code = 0x008500, //
-            keyword = 0x008500, //
-            string = 0x269926, //
-            literal = 0x39E639, //
-            comment = 0x67E667, //
-            metadata = 0x008500, //
+            code = 0x008500,
+            keyword = 0x008500,
+            string = 0x269926,
+            literal = 0x39E639,
+            comment = 0x67E667,
+            metadata = 0x008500,
             multilineComment = 0x67E667,
             punctuation = 0x008500,
             mark = 0x008500

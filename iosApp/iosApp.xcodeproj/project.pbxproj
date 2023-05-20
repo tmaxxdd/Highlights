@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		831796EB2A07A706007D1F32 /* DropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831796EA2A07A706007D1F32 /* DropdownMenu.swift */; };
 		83D902FD2A0008FF000D452F /* iosAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D902FC2A0008FF000D452F /* iosAppApp.swift */; };
 		83D902FF2A0008FF000D452F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D902FE2A0008FF000D452F /* ContentView.swift */; };
 		83D903012A000901000D452F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83D903002A000901000D452F /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		831796EA2A07A706007D1F32 /* DropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownMenu.swift; sourceTree = "<group>"; };
 		83D902F92A0008FF000D452F /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D902FC2A0008FF000D452F /* iosAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppApp.swift; sourceTree = "<group>"; };
 		83D902FE2A0008FF000D452F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				83D903002A000901000D452F /* Assets.xcassets */,
 				83D903022A000901000D452F /* iosApp.entitlements */,
 				83D903032A000901000D452F /* Preview Content */,
+				831796EA2A07A706007D1F32 /* DropdownMenu.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			files = (
 				83D902FF2A0008FF000D452F /* ContentView.swift in Sources */,
 				83D902FD2A0008FF000D452F /* iosAppApp.swift in Sources */,
+				831796EB2A07A706007D1F32 /* DropdownMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

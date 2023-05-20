@@ -1,7 +1,5 @@
 package pl.tkadziolka.highlights.model
 
-import androidx.compose.ui.text.capitalize
-
 enum class SyntaxLanguage {
     DEFAULT,
     MIXED,

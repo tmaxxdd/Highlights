@@ -13,9 +13,9 @@ class Highlights private constructor(
 ) {
 
     companion object {
-        fun fromBuilder(builder: Builder) = builder.build()
+        fun default() = fromBuilder(Builder())
 
-        fun getLanguageList() = SyntaxLanguage.values().map { it.name.capitalize() }
+        fun fromBuilder(builder: Builder) = builder.build()
     }
 
     data class Builder(

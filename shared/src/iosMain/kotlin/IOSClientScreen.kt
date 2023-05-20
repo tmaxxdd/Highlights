@@ -1,30 +1,18 @@
 import androidx.compose.ui.window.ComposeUIViewController
+import pl.tkadziolka.highlights.Highlights
 import pl.tkadziolka.highlights.model.PhraseLocation
 import pl.tkadziolka.highlights.model.SyntaxLanguage
 import pl.tkadziolka.highlights.model.SyntaxTheme
 import pl.tkadziolka.highlights.model.SyntaxThemes
 import pl.tkadziolka.highlights.view.CodeTextView
+import androidx.compose.ui.window.ComposeUIViewController
+import platform.UIKit.UIViewController
+import platform.UIKit.childViewControllers
 
 fun CodeTextViewUiViewController(
-    code: String,
-    language: SyntaxLanguage = SyntaxLanguage.DEFAULT,
-    theme: SyntaxTheme = SyntaxThemes.monokai,
-    emphasisLocations: List<PhraseLocation> = emptyList()
+    highlights: Highlights,
 ) = ComposeUIViewController {
     CodeTextView(
-        code = code,
-        language = language,
-        theme = theme,
-        emphasisLocations = emphasisLocations
+        highlights = highlights
     )
 }
-
-fun CodeTextViewUiViewControllerDefault(code: String) =
-    ComposeUIViewController {
-        CodeTextView(
-            code = code,
-            language = SyntaxLanguage.DEFAULT,
-            theme = SyntaxThemes.default,
-            emphasisLocations = emptyList()
-        )
-    }

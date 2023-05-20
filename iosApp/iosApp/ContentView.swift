@@ -8,40 +8,86 @@
 import SwiftUI
 import shared
 
-struct ComposableView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-        IOSClientScreenKt.CodeTextViewUiViewControllerDefault(code: "class Java extends {/n/n}")
+struct CodeTextView: UIViewControllerRepresentable {
+    @Binding private var highlights: Highlights
+    
+    init(newHighlights: Binding<Highlights>) {
+        self._highlights = newHighlights
     }
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+    func makeUIViewController(context: Context) -> UIViewController {
+        return UIViewController()
+    }
+    
+    func updateUIViewController(_ wrapper: UIViewController, context: Context) {
+        let kotlinController = IOSClientScreenKt.CodeTextViewUiViewController(highlights: highlights)
+        
+        kotlinController.removeFromParent()
+        kotlinController.view.removeFromSuperview()
+        
+        wrapper.addChild(kotlinController)
+        wrapper.view.addSubview(kotlinController.view)
+        
+        kotlinController.view.frame = wrapper.view.frame
+        kotlinController.didMove(toParent: wrapper)
+    }
 }
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State private var themeSelection = 0
-    @State private var languageSelection = 0
     
+    @State var highlights = Highlights.companion.default()
+    let themes = SyntaxThemes.shared.themes
+    let languages = SyntaxLanguage.companion.getNames()
+    
+    init() {
+        highlights.setCode(code:
+"""
+class Main {
+    public static void main(String[] args) {
+        int abcd = 100;
+    }
+}
+"""
+        )
+    }
     
     var body: some View {
         VStack {
             Text("Highlights")
             Divider()
-            ComposableView().ignoresSafeArea(.keyboard)
-            Picker(selection: $themeSelection, label: Text("Select theme")) {
-                let themes = SyntaxThemes.shared.themes.keys.map { $0.description }
-                ForEach(themes, id: \.self) {
-                    Text("\($0)")
-                }
+            CodeTextView(newHighlights: $highlights)
+                .ignoresSafeArea(.keyboard)
+                .padding()
+            Divider()
+            DropdownMenu(
+                values: getThemeNames(themes: themes),
+                defaultSelection: getThemeNames(themes: themes)
+                    .firstIndex(of: highlights.getTheme().description()) ?? 0
+            ) { selection in
+                $highlights.wrappedValue = highlights
+                    .getBuilder()
+                    .theme(theme: themes[selection]!)
+                    .build()
             }
             
-            Picker(selection: $languageSelection, label: Text("Select Language")) {
-                let languages = SyntaxLanguage.companion.getNames()
-                ForEach(languages, id: \.self) {
-                    Text("\($0)")
-                }
+            DropdownMenu(
+                values: languages,
+                defaultSelection:
+                    SyntaxLanguage.companion.getNames()
+                    .firstIndex(of: highlights.getLanguage().description()) ?? 0
+            ) { selection in
+                let newLanguage = SyntaxLanguage.companion.getByName(name: selection)
+                $highlights.wrappedValue = highlights
+                    .getBuilder()
+                    .language(language: newLanguage!)
+                    .build()
             }
         }
-        .padding()
+    }
+    
+    func getThemeNames(themes: Dictionary<String, SyntaxTheme>) -> Array<String> {
+        return themes.keys.map { $0.description }.sorted()
     }
 }
 
