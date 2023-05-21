@@ -21,34 +21,32 @@ struct CodeTextView: UIViewControllerRepresentable {
     
     func updateUIViewController(_ wrapper: UIViewController, context: Context) {
         let kotlinController = IOSClientScreenKt.CodeTextViewUiViewController(highlights: highlights)
-        
+        // Cleanup
         kotlinController.removeFromParent()
         kotlinController.view.removeFromSuperview()
-        
+        // Update view
         wrapper.addChild(kotlinController)
         wrapper.view.addSubview(kotlinController.view)
-        
+        // Match with frame
         kotlinController.view.frame = wrapper.view.frame
         kotlinController.didMove(toParent: wrapper)
     }
 }
 
 struct ContentView: View {
-    @Environment(\.colorScheme) var colorScheme
-    
     @State var highlights = Highlights.companion.default()
-    let themes = SyntaxThemes.shared.themes
-    let languages = SyntaxLanguage.companion.getNames()
+    private let themes = SyntaxThemes.shared.themes(darkMode: false)
+    private let languages = SyntaxLanguage.companion.getNames()
     
     init() {
         highlights.setCode(code:
-"""
-class Main {
-    public static void main(String[] args) {
-        int abcd = 100;
-    }
-}
-"""
+            """
+            class Main {
+                public static void main(String[] args) {
+                    int abcd = 100;
+                }
+            }
+            """
         )
     }
     

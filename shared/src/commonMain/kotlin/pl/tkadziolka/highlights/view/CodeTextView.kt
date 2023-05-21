@@ -1,5 +1,6 @@
 package pl.tkadziolka.highlights.view
 
+import androidx.compose.foundation.background
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,7 +14,7 @@ import pl.tkadziolka.highlights.model.ColorHighlight
 
 @Composable
 fun CodeTextView(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.background(Color.Transparent),
     highlights: Highlights
 ) {
     Text(

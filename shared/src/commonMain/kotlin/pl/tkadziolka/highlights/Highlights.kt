@@ -21,7 +21,7 @@ class Highlights private constructor(
     data class Builder(
         var code: String = "",
         var language: SyntaxLanguage = SyntaxLanguage.DEFAULT,
-        var theme: SyntaxTheme = SyntaxThemes.default,
+        var theme: SyntaxTheme = SyntaxThemes.default(),
         var emphasisLocations: List<PhraseLocation> = emptyList(),
     ) {
         fun code(code: String) = apply { this.code = code }
