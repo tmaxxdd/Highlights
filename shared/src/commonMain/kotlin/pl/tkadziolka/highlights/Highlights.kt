@@ -1,5 +1,6 @@
 package pl.tkadziolka.highlights
 
+import androidx.compose.ui.text.capitalize
 import pl.tkadziolka.highlights.internal.CodeAnalyzer
 import pl.tkadziolka.highlights.model.*
 
@@ -12,13 +13,15 @@ class Highlights private constructor(
 ) {
 
     companion object {
+        fun default() = fromBuilder(Builder())
+
         fun fromBuilder(builder: Builder) = builder.build()
     }
 
     data class Builder(
         var code: String = "",
         var language: SyntaxLanguage = SyntaxLanguage.DEFAULT,
-        var theme: SyntaxTheme = SyntaxThemes.default,
+        var theme: SyntaxTheme = SyntaxThemes.default(),
         var emphasisLocations: List<PhraseLocation> = emptyList(),
     ) {
         fun code(code: String) = apply { this.code = code }
@@ -44,18 +47,18 @@ class Highlights private constructor(
         val highlights = mutableListOf<CodeHighlight>()
         val structure = getCodeStructure()
         with(structure) {
-            tokens.forEach { highlights.add(Color(it, theme.code)) }
-            marks.forEach { highlights.add(Color(it, theme.mark)) }
-            punctuations.forEach { highlights.add(Color(it, theme.punctuation)) }
-            keywords.forEach { highlights.add(Color(it, theme.keyword)) }
-            strings.forEach { highlights.add(Color(it, theme.string)) }
-            literals.forEach { highlights.add(Color(it, theme.literal)) }
-            comments.forEach { highlights.add(Color(it, theme.comment)) }
-            multilineComments.forEach { highlights.add(Color(it, theme.multilineComment)) }
-            annotations.forEach { highlights.add(Color(it, theme.metadata)) }
+            tokens.forEach { highlights.add(ColorHighlight(it, theme.code)) }
+            marks.forEach { highlights.add(ColorHighlight(it, theme.mark)) }
+            punctuations.forEach { highlights.add(ColorHighlight(it, theme.punctuation)) }
+            keywords.forEach { highlights.add(ColorHighlight(it, theme.keyword)) }
+            strings.forEach { highlights.add(ColorHighlight(it, theme.string)) }
+            literals.forEach { highlights.add(ColorHighlight(it, theme.literal)) }
+            comments.forEach { highlights.add(ColorHighlight(it, theme.comment)) }
+            multilineComments.forEach { highlights.add(ColorHighlight(it, theme.multilineComment)) }
+            annotations.forEach { highlights.add(ColorHighlight(it, theme.metadata)) }
         }
 
-        emphasisLocations.forEach { highlights.add(Bold(it)) }
+        emphasisLocations.forEach { highlights.add(BoldHighlight(it)) }
 
         return highlights
     }

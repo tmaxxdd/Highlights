@@ -1,22 +1,66 @@
 //
 //  ContentView.swift
-//  iosExample
+//  iosApp
 //
-//  Created by Tomasz Kądziołka on 16/04/2023.
+//  Created by Tomasz Kądziołka on 01/05/2023.
 //
 
 import SwiftUI
 import shared
 
 struct ContentView: View {
+    @State var highlights = Highlights.companion.default()
+    private let themes = SyntaxThemes.shared.themes(darkMode: false)
+    private let languages = SyntaxLanguage.companion.getNames()
+    
+    init() {
+        highlights.setCode(code:
+                """
+                class Main {
+                    public static void main(String[] args) {
+                        int abcd = 100;
+                    }
+                }
+                """
+        )
+    }
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("\(Highlights.Companion().fromBuilder(builder: Highlights.Builder.init(code: "// abcd", language: SyntaxLanguage.cpp, theme: SyntaxTheme.init(code: 0, keyword: 0, string: 0, literal: 0, comment: 0, metadata: 0, multilineComment: 0, punctuation: 0, mark: 0), emphasisLocations: [])).getHighlights().description)")
+            Text("Highlights")
+            Divider()
+            CodeTextView(newHighlights: $highlights)
+                .ignoresSafeArea(.keyboard)
+                .padding()
+            Divider()
+            DropdownMenu(
+                values: getThemeNames(themes: themes),
+                defaultSelection: getThemeNames(themes: themes)
+                    .firstIndex(of: highlights.getTheme().description()) ?? 0
+            ) { selection in
+                $highlights.wrappedValue = highlights
+                    .getBuilder()
+                    .theme(theme: themes[selection]!)
+                    .build()
+            }
+            
+            DropdownMenu(
+                values: languages,
+                defaultSelection:
+                    SyntaxLanguage.companion.getNames()
+                    .firstIndex(of: highlights.getLanguage().description()) ?? 0
+            ) { selection in
+                let newLanguage = SyntaxLanguage.companion.getByName(name: selection)
+                $highlights.wrappedValue = highlights
+                    .getBuilder()
+                    .language(language: newLanguage!)
+                    .build()
+            }
         }
-        .padding()
+    }
+    
+    func getThemeNames(themes: Dictionary<String, SyntaxTheme>) -> Array<String> {
+        return themes.keys.map { $0.description }.sorted()
     }
 }
 
@@ -25,3 +69,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

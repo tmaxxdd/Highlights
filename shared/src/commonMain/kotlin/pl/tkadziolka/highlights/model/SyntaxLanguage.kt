@@ -15,5 +15,16 @@ enum class SyntaxLanguage {
     PYTHON,
     RUBY,
     SHELL,
-    SWIFT
+    SWIFT;
+
+    companion object {
+        fun getNames(): List<String> = values().map {
+            it.name
+                .lowercase()
+                .replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
+        }
+
+        fun getByName(name: String): SyntaxLanguage? =
+            values().find { it.name.equals(name, ignoreCase = true) }
+    }
 }
