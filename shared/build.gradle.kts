@@ -34,6 +34,7 @@ kotlin {
                 implementation(compose.ui)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                api("dev.snipme:highlights:0.2.0-SNAPSHOT")
             }
         }
         val commonTest by getting {
@@ -42,6 +43,7 @@ kotlin {
             }
         }
         val androidMain by getting {
+            dependsOn(commonMain)
             dependencies {
                 api("androidx.activity:activity-compose:1.7.0")
                 api("androidx.appcompat:appcompat:1.6.1")

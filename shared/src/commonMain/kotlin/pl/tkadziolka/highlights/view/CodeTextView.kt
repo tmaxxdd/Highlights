@@ -8,9 +8,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import pl.tkadziolka.highlights.Highlights
-import pl.tkadziolka.highlights.model.BoldHighlight
-import pl.tkadziolka.highlights.model.ColorHighlight
+import dev.snipme.highlights.Highlights
+import dev.snipme.highlights.model.BoldHighlight
+import dev.snipme.highlights.model.ColorHighlight
 
 @Composable
 fun CodeTextView(

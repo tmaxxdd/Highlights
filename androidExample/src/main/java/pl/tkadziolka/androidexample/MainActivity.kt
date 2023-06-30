@@ -20,9 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import pl.tkadziolka.highlights.Highlights
-import pl.tkadziolka.highlights.model.SyntaxLanguage
-import pl.tkadziolka.highlights.model.SyntaxThemes
+import dev.snipme.highlights.Highlights
+import dev.snipme.highlights.model.SyntaxLanguage
+import dev.snipme.highlights.model.SyntaxThemes
 import pl.tkadziolka.highlights.view.CodeTextView
 
 class MainActivity : AppCompatActivity() {

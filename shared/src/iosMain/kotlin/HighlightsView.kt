@@ -1,5 +1,5 @@
 import androidx.compose.ui.window.ComposeUIViewController
-import pl.tkadziolka.highlights.Highlights
+import dev.snipme.highlights.Highlights
 import pl.tkadziolka.highlights.view.CodeTextView
 
 fun CodeTextViewUiViewController(
